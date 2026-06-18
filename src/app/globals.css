@@ -1,0 +1,117 @@
+@import "tailwindcss";
+
+:root {
+  --background: #FAFAF8;
+  --foreground: #1B2A4A;
+  --hot-pink: #E91E8C;
+  --teal: #00B4B4;
+  --orange: #FF6B35;
+  --purple: #7B4FBE;
+  --mustard-gold: #F0A500;
+  --navy: #1B2A4A;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #E91E8C;
+  border-radius: 10px;
+}
+
+/* Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(0.8); opacity: 1; }
+  100% { transform: scale(2); opacity: 0; }
+}
+
+.animate-float { animation: float 3s ease-in-out infinite; }
+.animate-fade-in-up { animation: fadeInUp 0.6s ease-out forwards; }
+.animate-slide-in-right { animation: slideInRight 0.4s ease-out forwards; }
+
+.text-gradient-pink {
+  background: linear-gradient(135deg, #E91E8C, #FF6B35);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-teal {
+  background: linear-gradient(135deg, #00B4B4, #7B4FBE);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.bg-gradient-mugtastic {
+  background: linear-gradient(135deg, #E91E8C 0%, #FF6B35 50%, #F0A500 100%);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #E91E8C, #C2186F);
+  color: white;
+  border-radius: 9999px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(233, 30, 140, 0.3);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(233, 30, 140, 0.4);
+}
+
+.btn-outline {
+  border: 2px solid #1B2A4A;
+  color: #1B2A4A;
+  border-radius: 9999px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+  background: #1B2A4A;
+  color: white;
+  transform: translateY(-2px);
+}
+
+.card-hover {
+  transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+}
