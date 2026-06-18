@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { ShoppingCart, Search, User, Menu, X, ChevronDown } from "lucide-react";
-import MugtasticLogo from "@/components/ui/MugtasticLogo";
 import { useCart } from "@/context/CartContext";
 
 const navItems = [
@@ -45,14 +45,25 @@ export default function Header() {
   return (
     <header className="bg-white/95 backdrop-blur-sm sticky top-0 z-40 shadow-sm border-b border-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
-          {/* Logo */}
-          <Link href="/" className="flex-shrink-0">
-            <MugtasticLogo className="scale-90 origin-left" />
-          </Link>
+        {/* 3-column grid: logo | nav (centered) | actions */}
+        <div className="grid grid-cols-3 items-center h-20">
 
-          {/* Desktop Nav */}
-          <nav className="hidden lg:flex items-center gap-1">
+          {/* Col 1 — Logo (left-aligned) */}
+          <div className="flex items-center">
+            <Link href="/" className="flex-shrink-0">
+              <Image
+                src="/images/mugtastic-logo.png"
+                alt="Mugtastic – Where Personalities Pour Out"
+                width={220}
+                height={74}
+                className="h-14 w-auto object-contain"
+                priority
+              />
+            </Link>
+          </div>
+
+          {/* Col 2 — Desktop nav (centered) */}
+          <nav className="hidden lg:flex items-center justify-center gap-0.5">
             {navItems.map((item) => (
               <div
                 key={item.label}
@@ -62,10 +73,10 @@ export default function Header() {
               >
                 <Link
                   href={item.href}
-                  className="flex items-center gap-1 px-3 py-2 text-xs font-bold text-[#1B2A4A] hover:text-[#E91E8C] tracking-wider transition-colors"
+                  className="flex items-center gap-0.5 px-3 py-2 text-xs font-bold text-[#1B2A4A] hover:text-[#E91E8C] tracking-wider transition-colors whitespace-nowrap"
                 >
                   {item.label}
-                  {item.dropdown && <ChevronDown size={12} />}
+                  {item.dropdown && <ChevronDown size={11} />}
                 </Link>
 
                 {item.dropdown && openDropdown === item.label && (
@@ -85,8 +96,11 @@ export default function Header() {
             ))}
           </nav>
 
-          {/* Actions */}
-          <div className="flex items-center gap-3">
+          {/* Mobile: empty center placeholder */}
+          <div className="lg:hidden" />
+
+          {/* Col 3 — Actions (right-aligned) */}
+          <div className="flex items-center justify-end gap-2">
             <button aria-label="Search" className="hidden sm:flex p-2 text-[#1B2A4A] hover:text-[#E91E8C] transition-colors">
               <Search size={20} />
             </button>
@@ -107,7 +121,7 @@ export default function Header() {
             </button>
             <Link
               href="/design-your-own"
-              className="hidden md:inline-flex items-center gap-2 bg-[#E91E8C] hover:bg-[#C2186F] text-white text-xs font-bold px-5 py-2.5 rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-pink-200 tracking-wider"
+              className="hidden md:inline-flex items-center gap-1.5 bg-[#E91E8C] hover:bg-[#C2186F] text-white text-xs font-bold px-4 py-2.5 rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-pink-200 tracking-wider whitespace-nowrap"
             >
               DESIGN YOURS
             </Link>
